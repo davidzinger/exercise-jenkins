@@ -13,15 +13,15 @@ pipeline {
                     steps {
                         withCredentials([[
                             $class:'AmazonWebServicesCredentialsBinding',
-                            CredentialsID: 'D1',
+                            credentialsID: 'D1',
                             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
   
                             
-                            sh 'docker push public.ecr.aws/y0a7i3y8/dave_reg:latest'
+                                sh 'docker push public.ecr.aws/y0a7i3y8/dave_reg:latest'
                     
-                            echo 'release..'
-                        }
+                             echo 'release..'
+                         }
                         }
                     }
                 
