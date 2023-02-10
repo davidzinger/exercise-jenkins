@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls'
-                sh 'docker build -t flask_app /home/ubuntu/my_images/Dockerfile'
+                sh 'docker build -t flask_app .'
                 echo 'Building.........'
             }
         }
