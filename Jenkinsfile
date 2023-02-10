@@ -11,7 +11,7 @@ pipeline {
         }
         stage('release') {
             steps {
-                docker.withRegistry("https://public.ecr.aws/y0a7i3y8/dave_reg.amazonws.com", "ecr:us-east-1:credential-id") {
+                docker.withRegistry("public.ecr.aws/y0a7i3y8/dave_reg", "ecr:us-east-1:D1") {
                 docker.image("flask_app").push()
 }
                 echo 'release..'
