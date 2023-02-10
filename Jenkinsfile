@@ -15,7 +15,7 @@ pipeline {
             steps {
                 
                  
-                 sh 'docker push 333082661382.dkr.ecr.us-east-1.amazonaws.com/dave_reg:latest'
+                 sh 'docker push public.ecr.aws/y0a7i3y8/dave_reg:latest'
             
                  echo 'release..'
             }
