@@ -9,9 +9,12 @@ pipeline {
                 echo 'Building.........'
             }
         }
-        stage('Test') {
+        stage('release') {
             steps {
-                echo 'Testing..'
+                docker.withRegistry("https://public.ecr.aws/y0a7i3y8/dave_reg.amazonws.com", "ecr:us-east-1:credential-id") {
+                docker.image("flask_app").push()
+}
+                echo 'release..'
             }
         }
         stage('Deploy') {
