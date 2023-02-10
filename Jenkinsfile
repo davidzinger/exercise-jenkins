@@ -14,10 +14,11 @@ pipeline {
         stage('release') {
             steps {
                 
-                 
+                 withAWS(credentials: 'D1', region: 'us-east-1'){
                  sh 'docker push public.ecr.aws/y0a7i3y8/dave_reg:latest'
             
-                 echo 'release..'
+                    echo 'release..'
+                }
             }
         }
         stage('Deploy') {
