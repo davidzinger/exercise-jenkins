@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-           registry = "333082661382.dkr.ecr.us-east-1.amazonaws.com/dave_reg"
+           registry = "public.ecr.aws/y0a7i3y8/dave_reg"
        }
     stages {
         stage('Build') {
