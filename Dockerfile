@@ -1,3 +1,4 @@
+FROM ubuntu
 MAINTAINER dave_zing
 
 RUN apt-get update
