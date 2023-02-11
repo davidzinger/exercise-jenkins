@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script{
                         docker.withRegistry('https://333082661382.dkr.ecr.us-east-1.amazonaws.com/dave_private', 'ecr:us-east-1:D1') {
-                    app.push("${env.BUILD_NUMBER}")
+                    
                     app.push("latest")
                     }
                 }
