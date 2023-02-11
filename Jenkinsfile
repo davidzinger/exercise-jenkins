@@ -32,8 +32,8 @@ pipeline {
 
         stage('login client - server delivery'){
          steps{
-            sshagent(credentials:['client_server']){
-               sh 'ssh  -o StrictHostKeyChecking=no  ubuntu@3.231.148.231 uptime "whoami"'
+            sshagent(['client_server']){
+               sh 'ssh  -o StrictHostKeyChecking=no -l ubuntu 3.231.148.231 whoami'
           }
         echo "success lgoin"
          }
