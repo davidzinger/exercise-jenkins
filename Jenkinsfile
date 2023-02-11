@@ -12,11 +12,13 @@ pipeline {
                 }
             }
         }
+
         stage('Test'){
             steps {
                  echo 'Empty'
             }
         }
+
         stage('Deploy') {
             steps {
                 script{
@@ -27,6 +29,15 @@ pipeline {
                 }
             }
         }
+
+        stage('login client - server delivery'){
+         steps{
+            sshagent(credentials:['client_server']){
+               sh 'ssh  -o StrictHostKeyChecking=no  ubuntu@3.231.148.231 uptime "whoami"'
+          }
+        echo "success lgoin"
+         }
+       }
+   
     }
 }
-
