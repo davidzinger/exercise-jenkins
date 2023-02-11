@@ -1,36 +1,32 @@
 pipeline {
     agent any
-        
-            stages {
-                stage('Build') {
-                    steps {
-                        sh 'ls'
-                        sh 'docker build -t dave_reg .'
-                        echo 'Building.........'
-                    }
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+
+        stage('Build') { 
+            steps { 
+                script{
+                 app = docker.build("my-app")
                 }
-                stage('release') {
-                    steps {
-                        withCredentials([[
-                            $class:'AmazonWebServicesCredentialsBinding',
-                            credentialsID: 'D1',
-                            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
-  
-                            
-                                sh 'docker push public.ecr.aws/y0a7i3y8/dave_reg:latest'
-                    
-                             echo 'release..'
-                         }
-                        }
-                    }
-                
-                stage('Deploy') {
-                    steps {
-                        echo 'Deploying....'
+            }
+        }
+        stage('Test'){
+            steps {
+                 echo 'Empty'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script{
+                        docker.withRegistry('public.ecr.aws/y0a7i3y8/dave_reg', 'ecr:us-east-2:D1') {
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
                     }
                 }
             }
-
+        }
+    }
 }
 
