@@ -18,7 +18,7 @@ RUN mkdir /home/src/app
 WORKDIR /home/src/app
 
 
-RUN git clone https://github.com/davidzinger/app_cicd_test.git /home/src/app
+RUN git clone https://github.com/davidzinger/exercise-jenkins.git /home/src/app
 
 EXPOSE 5000
 
