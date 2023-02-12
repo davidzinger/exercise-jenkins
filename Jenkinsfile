@@ -33,7 +33,7 @@ pipeline {
         stage('login client - server delivery'){
          steps{
             sshagent(['client_server']){
-               sh 'ssh  -o StrictHostKeyChecking=no -l ubuntu 3.231.148.231 ./app_pull_run.sh '
+               sh 'ssh  -o StrictHostKeyChecking=no -l ubuntu@3.231.148.231 ./app_pull_run.sh '
           }
         echo "success login, new image running in container"
          }
